@@ -14,14 +14,15 @@ const { RoomModal } = require("./Modals/rooms.modal");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/users", userRouter);
-app.use(authentication);
-app.use("/rooms", roomsRouter);
 
 //demo call
 app.get("/", (req, res) => {
   res.send("This is EMT Project");
 });
+
+app.use("/users", userRouter);
+app.use(authentication);
+app.use("/rooms", roomsRouter);
 
 //socket io server
 const server = http.createServer(app);
